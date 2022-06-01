@@ -1,5 +1,6 @@
+// variable to get city name from search box
 const cityName = document.getElementById("cityName");
-
+// variable for API Key
 const key = "f27da051d1bb049cdcc33ee252c8cec2";
 
 document.getElementById("searchBtn").addEventListener("click", firstCall);
@@ -9,9 +10,9 @@ console.log(cityName)
 function lastCity() {
     var lastCity = localStorage.getItem("cityName");
 }
-
-function firstCall(cityName) {
-    fetch("http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + key)
+// function to get current weather conditions
+function firstCall() {
+    fetch("http://api.openweathermap.org/data/2.5/weather?q=sandy&units=imperial&appid=" + key)
         .then(function (response) {
             return response.json();
         })
@@ -25,7 +26,7 @@ function firstCall(cityName) {
             console.log(data)
         })
 }
-
+// function to get 5 day forecast
 function getweather(lat, lon) {
 
     fetch("https://api.openweathermap.org/data/3.0/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + key)
